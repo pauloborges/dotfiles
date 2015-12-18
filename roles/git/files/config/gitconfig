@@ -1,0 +1,17 @@
+[user]
+	name = Paulo Borges
+	email = paulo@fareoffice.com
+[color]
+	ui = auto
+[core]
+	editor = vim
+[alias]
+	cp = cherry-pick
+	co = checkout
+	ls = log --pretty=format:'%C(yellow)%h %Creset%s%Cblue [%an]%Cred%d' --decorate
+	ll = log --pretty=format:'%C(yellow)%h %Creset%s%Cblue [%an]%Cred%d' --decorate --numstat
+	lv = log --graph --oneline --decorate --all
+	fu = fetch upstream
+	ru = reset --mixed upstream
+[push]
+	default = matching

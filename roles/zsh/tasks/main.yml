@@ -1,0 +1,54 @@
+---
+
+- name: install zsh
+  homebrew: name=zsh state=present
+
+# XXX: use a external variable for the user name
+# XXX: https://github.com/ansible/ansible/issues/13266
+#- name: change shell to zsh
+#  user: name=pauloborges shell=/bin/zsh
+
+- name: clone z repository
+  git: >
+    repo=git@github.com:rupa/z.git
+    dest=~/.zz
+    force=no
+
+- name: touch .z file
+  file: path=~/.z state=touch
+
+- name: clone prezto repository
+  git: >
+    repo=git@github.com:sorin-ionescu/prezto.git
+    dest=~/.zprezto
+    recursive=yes
+    force=no
+
+- name: symlink prezto runcoms
+  file: >
+    src=~/.zprezto/runcoms/{{ item }}
+    dest=~/.{{ item }}
+    state=link
+    force=yes
+  with_items:
+    - zlogin
+    - zlogout
+    - zpreztorc
+    - zprofile
+    - zshenv
+    - zshrc
+
+- name: symlink prezto custom runcoms
+  file: >
+    src={{ item }}
+    dest=~/.{{ item | basename }}
+    state=link
+    force=yes
+  with_fileglob:
+    - ./runcoms/*
+
+# XXX: symlink
+- name: copy custom prezto theme
+  copy: >
+    src=prompt_borges_setup
+    dest=~/.zprezto/modules/prompt/functions/prompt_borges_setup

@@ -1,0 +1,13 @@
+---
+
+- name: install tmux
+  homebrew: pkg=tmux state=present
+
+- name: symlink config files
+  file: >
+    src={{ item }}
+    dest=~/.{{ item | basename }}
+    state=link
+    force=yes
+  with_fileglob:
+    - ./*
