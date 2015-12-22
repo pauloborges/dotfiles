@@ -3,6 +3,7 @@
 - hosts: all
   gather_facts: false
   roles:
+    - role: python
     - role: zsh
     - role: tmux
     - role: git

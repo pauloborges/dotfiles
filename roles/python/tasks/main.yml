@@ -1,0 +1,10 @@
+---
+
+- name: install python
+  homebrew: >
+    pkg={{ item }}
+    state=present
+    update_homebrew=yes
+  with_items:
+    - python
+    - python3
