@@ -1,0 +1,7 @@
+---
+
+- name: install node and npm
+  omebrew: >
+    pkg=node
+    state=present
+    update_homebrew=yes

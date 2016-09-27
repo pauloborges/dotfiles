@@ -1,0 +1,29 @@
+---
+
+- name: install dependencies
+  pip: >
+    name={{ item }}
+    executable={{ pip_executable }}
+  with_items:
+    - psutil
+
+- name: install powerline
+  pip: >
+    name=powerline-status
+    executable={{ pip_executable }}
+
+- name: clone fonts repository
+  git: >
+    repo=git@github.com:powerline/fonts.git
+    dest=/tmp/powerline-fonts
+  register: powerline_fonts_result
+
+- name: install fonts
+  shell: bash install.sh
+  args:
+    chdir: /tmp/powerline-fonts
+  when: powerline_fonts_result.changed
+
+# # XXX
+# - name: symlink custom config files
+#   copy: src=powerline dest=~/.config

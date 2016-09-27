@@ -1,0 +1,4 @@
+---
+
+pip_executable: "/usr/local/bin/pip"
+pip3_executable: "/usr/local/bin/pip3"

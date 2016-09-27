@@ -1,6 +1,6 @@
 [user]
 	name = Paulo Borges
-	email = paulo@fareoffice.com
+	email = paulo.borges@fareoffice.com
 [color]
 	ui = auto
 [core]
@@ -15,3 +15,11 @@
 	ru = reset --mixed upstream
 [push]
 	default = matching
+[diff]
+	compactionHeuristic = true
+[pager]
+	log = diff-highlight | less
+	show = diff-highlight | less
+	diff = diff-highlight | less
+[interactive]
+	diffFilter = diff-highlight

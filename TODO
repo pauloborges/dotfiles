@@ -1,0 +1,5 @@
+Sublime:
+1. Install it using cask
+2. ln -s "/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl" ~/bin/subl
+3. Install https://packagecontrol.io/installation
+4. Install https://github.com/babel/babel-sublime

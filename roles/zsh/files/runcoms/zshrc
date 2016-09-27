@@ -3,12 +3,27 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshrc" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/runcoms/zshrc"
 fi
 
+# Add local bin directories to $PATH
 path+=("${ZDOTDIR:-$HOME}/bin")
 path+=("${ZDOTDIR:-$HOME}/.local/bin")
+
+# Chromium depot_tools
+path+=("${ZDOTDIR:-$HOME}/workspace/chromium/depot_tools")
+
+# Set locale
+export LC_ALL=en_US.UTF-8
 
 # z
 source "${ZDOTDIR:-$HOME}/.zz/z.sh"
 
-# virtualenvwrapper
-# export WORKON_HOME=$HOME/.virtualenvs
-# source /usr/bin/virtualenvwrapper.sh
+# pyenv
+export PYENV_ROOT=/usr/local/var/pyenv
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# Anaconda
+path=("${ZDOTDIR:-$HOME}/anaconda/bin" $path)
+
+# autoenv
+source /usr/local/opt/autoenv/activate.sh
